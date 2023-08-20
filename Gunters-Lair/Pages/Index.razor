@@ -1,9 +1,45 @@
 ﻿@page "/"
 
-<PageTitle>Index</PageTitle>
+<PageTitle>Home</PageTitle>
 
-<h1>Hello, world!</h1>
+<MudContainer>
+	@if (_isLoading) 
+	{
+		<MudProgressLinear Color="Color.Tertiary" Striped="true" Size="Size.Medium" Value="@Value" Class="my-7" />
+	}
+	else 
+	{
+		<MudContainer Class="ma-3">
+			<MudPaper Class="pa-3">
+				<MudText Typo="Typo.h2">Hi!</MudText>
+				<MudText Typo="Typo.body1">
+					My name is <b>David</b> and I'm a recent <b>Computer Science</b> graduate from <b>Drexel Univeristy!</b>
+				</MudText>
+			</MudPaper>
+		</MudContainer>
+	}
+</MudContainer>
 
-Welcome to your new app.
+@code {
+	private int Value { get; set; }
+	private bool _isLoading = false;
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+	protected override async Task OnInitializedAsync() 
+	{
+		_isLoading = true;
+		await SimulateProgress();
+		_isLoading = false;
+	}
+
+	private async Task SimulateProgress()
+	{
+		Value = 0;
+		do
+		{
+			Value += 10;
+			StateHasChanged();
+			await Task.Delay(150);
+
+		} while (Value < 100);
+	}
+}

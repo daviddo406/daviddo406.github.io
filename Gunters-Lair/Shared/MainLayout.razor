@@ -1,11 +1,12 @@
 ﻿@inherits LayoutComponentBase
 
-<MudThemeProvider Theme="@MyCustomTheme"/>
+<MudThemeProvider IsDarkMode="true"/>
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
 <MudLayout>
     <MudAppBar Elevation="1">
+        <MudImage Src="images\gunter.png" Width="60" Height="60"></MudImage>
         <MudText Typo="Typo.h5" Class="ml-3">Gunter's Lair</MudText>
         <MudText Typo="Typo.h4" Class="ml-3"> | </MudText>
         <MudText Typo="Typo.subtitle1" Class="ml-3">There's Something in the Air!</MudText>
@@ -13,21 +14,17 @@
         <MudIconButton Icon="@Icons.Material.Filled.MoreVert" Color="Color.Inherit" Edge="Edge.End" />
     </MudAppBar>
     <MudMainContent>
-        @*Body*@
+        @Body
     </MudMainContent>
+    <MudContainer MaxWidth="MaxWidth.ExtraExtraLarge">
+        <MudContainer Class="sticky" MaxWidth="MaxWidth.ExtraExtraLarge">
+            <MudPaper Class="pa-3" >
+                <a target="_blank" href="https://icons8.com/icon/uJP6M6Qi3A6T/gunter">Gunter</a> icon by <a target="_blank" href="https://icons8.com">Icons8</a>
+            </MudPaper>
+        </MudContainer>
+    </MudContainer>
 </MudLayout>
 
 @code {
-    MudTheme MyCustomTheme = new MudTheme()
-    {
-        Palette = new Palette()
-        {
-            Primary = Colors.LightBlue.Darken2,
-            Secondary = Colors.Orange.Darken1,
-            AppbarBackground = Colors.LightBlue.Default,
-            Background = Colors.Grey.Darken4,
-            
-        }
-    };
 
 }
